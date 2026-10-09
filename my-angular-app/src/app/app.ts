@@ -1,25 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { CounterComponent } from './counter/counter';
+import { DisplayComponent } from './display/display';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.scss',
-  templateUrl: './app.html',
-})
-export class App {
-  protected readonly title = signal('my-angular-app');
-  tabs = ['tab1', 'tab2', 'tab3']
+  imports: [CounterComponent, DisplayComponent],
+  template: `
+    <h2>Angular State Management Demo</h2>
 
-  toggleTab(tab: string) {
-    if (tab === 'tab1') {
-      console.log('tab one clicked')
-    }
-    else if (tab === 'tab2') {
-      console.log('tab two clicked')
-    }
-    else if (tab === 'tab3') {
-      console.log('tab three clicked')
-    }
-  }
-}
+    <app-counter></app-counter>
+
+    <hr>
+
+    <app-display></app-display>
+  `
+})
+export class App {}
